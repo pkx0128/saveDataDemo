@@ -79,12 +79,12 @@ class ViewController: UIViewController , UITextFieldDelegate{
         
 
     }
-    func showData(){
+    @objc func showData(){
         navigationController?.pushViewController(showViewController(), animated: true);
     }
     
     //隐藏键盘
-    func tap(G:UITapGestureRecognizer) {
+    @objc func tap(G:UITapGestureRecognizer) {
         self.view.endEditing(true);
     }
 
@@ -98,7 +98,7 @@ class ViewController: UIViewController , UITextFieldDelegate{
     }
     
     //保存数据到CoreData
-    func SavaDataToCoredata(){
+    @objc func SavaDataToCoredata(){
         do{
             let inserInfo = NSEntityDescription.insertNewObject(forEntityName: "MyStudents", into: mycontext);
             if(mynum.text != "" && myname.text != "" && myage.text != ""){
@@ -127,7 +127,7 @@ class ViewController: UIViewController , UITextFieldDelegate{
         }
     }
     //清除coreData中的数据
-    func delCoreData(){
+    @objc func delCoreData(){
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "MyStudents");
         do{
             let rels = try mycontext.fetch(request) as! [NSManagedObject];
